@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    tools:context=".view.HomeActivity"
+    android:orientation="vertical">
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/home_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/home_group"
+        >
+    </android.support.v4.view.ViewPager>
+
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_70"
+        android:layout_alignParentBottom="true"
+        android:background="@mipmap/rectangle_6"
+        />
+
+    <RadioGroup
+        android:id="@+id/home_group"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_50"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/hoem_btn_home"
+            android:layout_width="@dimen/dp_24"
+            android:layout_height="@dimen/dp_24"
+            android:button="@null"
+            android:checked="true"
+            android:layout_marginLeft="@dimen/dp_32"
+            android:layout_marginRight="@dimen/dp_34"
+            android:gravity="center_vertical"
+            android:background="@drawable/home_button_btn_home" />
+
+        <RadioButton
+            android:id="@+id/hoem_btn_circle"
+            android:background="@drawable/home_button_btn_cirler"
+            android:layout_width="@dimen/dp_24"
+            android:layout_height="@dimen/dp_20"
+            android:button="@null"
+            android:checked="false"
+            android:layout_marginBottom="@dimen/dp_10"
+            android:layout_marginRight="@dimen/dp_30"
+            android:gravity="center_vertical"/>
+
+        <RadioButton
+            android:layout_marginBottom="@dimen/dp_10"
+            android:id="@+id/hoem_btn_shopcar"
+            android:layout_width="@dimen/dp_52"
+            android:layout_height="@dimen/dp_52"
+            android:button="@null"
+            android:background="@mipmap/commom_tab_btn_shoppingcart_n"
+            android:layout_marginLeft="@dimen/dp_12"
+            android:gravity="center_vertical"
+            />
+
+        <RadioButton
+            android:id="@+id/hoem_btn_indent"
+            android:layout_width="@dimen/dp_24"
+            android:layout_height="@dimen/dp_24"
+            android:gravity="center_vertical"
+            android:checked="false"
+            android:layout_marginLeft="@dimen/dp_34"
+            android:background="@drawable/home_button_btn_indent"
+            android:button="@null" />
+
+        <RadioButton
+            android:id="@+id/hoem_btn_mine"
+            android:layout_width="@dimen/dp_24"
+            android:layout_height="@dimen/dp_24"
+            android:gravity="center_vertical"
+            android:checked="false"
+            android:layout_marginLeft="@dimen/dp_34"
+            android:background="@drawable/home_button_btn_mine"
+            android:button="@null" />
+    </RadioGroup>
+
+
+</RelativeLayout>

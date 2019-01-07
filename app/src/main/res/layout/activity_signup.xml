@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/login"
+    android:orientation="vertical"
+    tools:context=".view.SignupActivity">
+
+    <EditText
+        android:id="@+id/signup_putin_name"
+        android:layout_width="@dimen/dp_260"
+        android:layout_height="@dimen/dp_60"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/dp_160"
+        android:hint="手机号"
+        android:textColorHint="#fff"
+        android:drawablePadding="@dimen/dp_30"
+        android:textSize="25sp"
+        android:textColor="#fff"
+        android:background="@null"
+        android:drawableLeft="@mipmap/login_phone" />
+    <TextView
+        android:layout_width="@dimen/dp_260"
+        android:layout_height="@dimen/dp_1"
+        android:layout_gravity="center"
+        android:background="#fff" />
+    <LinearLayout
+        android:layout_width="@dimen/dp_260"
+        android:layout_height="@dimen/dp_60"
+        android:layout_gravity="center"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/signup_putin_yanzheng"
+            android:layout_width="@dimen/dp_200"
+            android:layout_height="@dimen/dp_60"
+            android:background="@null"
+            android:hint="验证码"
+            android:textColorHint="#fff"
+            android:textColor="#fff"
+            android:drawablePadding="@dimen/dp_30"
+            android:textSize="25sp"
+            android:drawableLeft="@mipmap/login_dun" />
+
+        <TextView
+            android:id="@+id/signup_putin_pwd_huoqu"
+            android:layout_width="@dimen/dp_60"
+            android:layout_height="@dimen/dp_60"
+            android:text="获取验证码"
+            android:gravity="center"
+            android:textColor="#fff"
+            android:textSize="@dimen/sp_10"
+            />
+    </LinearLayout>
+    <TextView
+        android:layout_width="@dimen/dp_260"
+        android:layout_height="@dimen/dp_1"
+        android:layout_gravity="center"
+        android:background="#fff" />
+    <LinearLayout
+        android:layout_width="@dimen/dp_260"
+        android:layout_height="@dimen/dp_60"
+        android:layout_gravity="center"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/signup_putin_pwd"
+            android:layout_width="@dimen/dp_200"
+            android:layout_height="@dimen/dp_60"
+            android:background="@null"
+            android:hint="输入注册密码"
+            android:textColorHint="#fff"
+            android:textColor="#fff"
+            android:password="true"
+            android:drawablePadding="@dimen/dp_30"
+            android:textSize="25sp"
+            android:drawableLeft="@mipmap/login_suo" />
+
+        <ImageView
+            android:id="@+id/signup_putin_pwd_hind"
+            android:layout_width="@dimen/dp_60"
+            android:layout_height="@dimen/dp_60"
+            android:padding="30dp"
+            android:src="@mipmap/login_eye" />
+    </LinearLayout>
+    <TextView
+        android:layout_width="@dimen/dp_260"
+        android:layout_height="@dimen/dp_1"
+        android:layout_gravity="center"
+        android:background="#fff" />
+    <LinearLayout
+        android:layout_width="@dimen/dp_260"
+        android:layout_height="@dimen/dp_50"
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        >
+        <TextView
+            android:id="@+id/signup_putin_signup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="已有账号？立即登录"
+            android:textColor="#fff"
+            android:textSize="@dimen/sp_10"
+            android:layout_gravity="center_vertical"
+
+            />
+    </LinearLayout>
+    <Button
+        android:id="@+id/signup_putin_success"
+        android:layout_width="@dimen/dp_260"
+        android:layout_height="@dimen/dp_35"
+        android:text="立即注册"
+        android:textColor="#FFFF5B2A"
+        android:textSize="@dimen/dp_17"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/dp_70"
+        android:background="@drawable/login_button_shap"
+        />
+</LinearLayout>

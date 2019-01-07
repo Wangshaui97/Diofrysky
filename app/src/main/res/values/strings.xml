@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">维度</string>
+    <string name="title_activity_button">ButtonActivity</string>
+    <string name="title_search">搜索</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

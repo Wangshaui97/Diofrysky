@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".view.homefragment.HomeFragment">
+
+    <android.support.constraint.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_50"
+        android:background="#fceded">
+
+        <ImageView
+            android:id="@+id/common_home_btn_menu"
+            android:layout_width="@dimen/dp_50"
+            android:layout_height="@dimen/dp_50"
+            android:padding="20dp"
+            android:src="@mipmap/common_nav_btn_menu_n" />
+
+        <ImageView
+            android:id="@+id/common_home_btn_return"
+            android:layout_width="@dimen/dp_50"
+            android:layout_height="@dimen/dp_50"
+            android:padding="@dimen/dp_18"
+            android:src="@mipmap/btn_back"
+            android:visibility="gone" />
+
+        <EditText
+            android:id="@+id/common_nav_btn_puntinsearchname"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_30"
+            android:layout_marginLeft="@dimen/dp_50"
+            android:layout_marginRight="@dimen/dp_70"
+            android:background="@drawable/input_shap"
+            android:hint="手机"
+            android:paddingLeft="@dimen/dp_30"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/common_nav_btn_search"
+            android:layout_width="@dimen/dp_70"
+            android:layout_height="@dimen/dp_50"
+            android:gravity="center"
+            android:text="@string/title_search"
+            android:textColor="#747474"
+            android:textSize="20sp"
+            app:layout_constraintRight_toRightOf="parent" />
+    </android.support.constraint.ConstraintLayout>
+
+    <ScrollView
+        android:id="@+id/scrol"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#f1f1f1">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipChildren="false"
+            android:layerType="software"
+            >
+            <com.stx.xhb.xbanner.XBanner
+                android:id="@+id/xbanner_home"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_150"
+                android:layout_marginLeft="@dimen/dp_24"
+                android:layout_marginRight="@dimen/dp_24"
+                android:clipChildren="false"
+                app:AutoPlayTime="3000"
+                app:isShowIndicatorOnlyOne="false"
+                app:isShowNumberIndicator="true"
+                app:pageChangeDuration="800" />
+
+        </LinearLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_20">
+
+                <com.facebook.drawee.view.SimpleDraweeView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_30"
+                    app:placeholderImage="@mipmap/bitmap_rexiao"
+                    app:roundBottomLeft="false"
+                    app:roundBottomRight="false"
+                    app:roundTopLeft="true"
+                    app:roundTopRight="true"
+                    app:roundedCornerRadius="@dimen/dp_20" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_30"
+                    android:gravity="center"
+                    android:text="热销商品"
+                    android:textColor="#ff8f6d"
+                    android:textSize="21sp" />
+
+                <ImageView
+                    android:id="@+id/home_btn_more_rxxp"
+                    android:layout_width="@dimen/dp_30"
+                    android:layout_height="@dimen/dp_30"
+                    android:layout_alignParentRight="true"
+                    android:padding="@dimen/dp_5"
+                    android:src="@mipmap/home_btn_more_yellow" />
+            </RelativeLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/common_home_rview_one"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#fff" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_20">
+
+                <com.facebook.drawee.view.SimpleDraweeView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_30"
+                    app:placeholderImage="@mipmap/bitmap_molishishang"
+                    app:roundBottomLeft="false"
+                    app:roundBottomRight="false"
+                    app:roundTopLeft="true"
+                    app:roundTopRight="true"
+                    app:roundedCornerRadius="@dimen/dp_20" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_30"
+                    android:gravity="center"
+                    android:text="魔力时尚"
+                    android:textColor="#5182ff"
+                    android:textSize="21sp" />
+
+                <ImageView
+                    android:id="@+id/home_btn_more_mlss"
+                    android:layout_width="@dimen/dp_30"
+                    android:layout_height="@dimen/dp_30"
+                    android:layout_alignParentRight="true"
+                    android:padding="@dimen/dp_5"
+                    android:src="@mipmap/home_btn_more_purple" />
+            </RelativeLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/common_home_rview_two"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_300"
+                android:background="#fff"
+                android:padding="@dimen/dp_20" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_20">
+
+                <com.facebook.drawee.view.SimpleDraweeView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_30"
+                    app:placeholderImage="@mipmap/bitmap_pinzhishenghuo"
+
+                    app:roundBottomLeft="false"
+                    app:roundBottomRight="false"
+                    app:roundTopLeft="true"
+                    app:roundTopRight="true"
+                    app:roundedCornerRadius="@dimen/dp_20" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_30"
+                    android:gravity="center"
+                    android:text="品质生活"
+                    android:textColor="#f46a3c"
+                    android:textSize="21sp" />
+
+                <ImageView
+                    android:id="@+id/home_btn_more_pzsh"
+                    android:layout_width="@dimen/dp_30"
+                    android:layout_height="@dimen/dp_30"
+                    android:layout_alignParentRight="true"
+                    android:padding="@dimen/dp_5"
+                    android:src="@mipmap/home_btn_moer_pink" />
+            </RelativeLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/common_home_rview_three"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#fff"
+                android:padding="@dimen/dp_20" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/common_home_rview_serch"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </android.support.v7.widget.RecyclerView>
+
+    <LinearLayout
+        android:id="@+id/common_home_none_nothing"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/dp_100"
+            android:src="@mipmap/home_img_none_nothing"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="抱歉！没有找到商品唉~~"
+            android:gravity="center"
+            />
+    </LinearLayout>
+
+
+</LinearLayout>
