@@ -1,9 +1,293 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.DetailsActivity">
 
-</android.support.constraint.ConstraintLayout>
+
+    <com.bawei.www.diofrysky.view.DetailsScrollView
+        android:id="@+id/details_scroll_changecolor"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/dp_24"
+        android:layout_marginRight="@dimen/dp_24">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_70">
+
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/details_viewpager_show"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_274" />
+
+                <TextView
+                    android:id="@+id/details_textview_shownum"
+                    android:layout_width="@dimen/dp_48"
+                    android:layout_height="@dimen/dp_24"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentBottom="true"
+                    android:gravity="center"
+                    android:text="1/5" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_14"
+                android:layout_marginBottom="@dimen/dp_20">
+
+                <TextView
+                    android:id="@+id/details_textview_sprice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="￥0.0"
+                    android:textColor="#F00"
+                    android:textSize="@dimen/sp_20" />
+
+                <TextView
+                    android:id="@+id/details_textview_sold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:text="已售0件"
+                    android:textColor="#666666"
+                    android:textSize="@dimen/sp_12" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/details_textview_title"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp_15"
+                android:text="商品名称"
+                android:textColor="#666666"
+                android:textSize="@dimen/sp_12" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_10"
+                android:layout_marginBottom="@dimen/dp_20"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="重量"
+                    android:textColor="#666666"
+                    android:textSize="@dimen/sp_12" />
+
+                <TextView
+                    android:id="@+id/details_textview_Weight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:text="KG"
+                    android:textColor="#666666"
+                    android:textSize="@dimen/sp_12" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="商品详情"
+                android:textColor="#666666"
+                android:textSize="@dimen/sp_14" />
+
+            <TextView
+                android:layout_width="@dimen/dp_30"
+                android:layout_height="@dimen/dp_4"
+                android:layout_marginTop="@dimen/dp_4"
+                android:layout_marginBottom="@dimen/dp_10"
+                android:background="#ff5e70" />
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/details_Image_details"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_306"
+                app:roundedCornerRadius="@dimen/dp_10"
+                app:roundBottomLeft="true"
+                app:roundBottomRight="true"
+                app:roundTopRight="true"
+                app:roundTopLeft="true"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_10"
+                android:layout_marginBottom="@dimen/dp_10"
+                android:text="产品介绍"
+                android:textColor="#666666"
+                android:textSize="@dimen/sp_14" />
+
+            <TextView
+                android:id="@+id/details_textview_describe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dp_10"
+                android:text="666"
+                android:textColor="#666666"
+                android:textSize="@dimen/sp_14" />
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/details_Image_describe"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_306"
+                app:roundedCornerRadius="@dimen/dp_10"
+                app:roundBottomLeft="true"
+                app:roundBottomRight="true"
+                app:roundTopRight="true"
+                app:roundTopLeft="true"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="评价"
+                android:textColor="#666666"
+                android:textSize="@dimen/sp_14" />
+
+            <TextView
+                android:layout_width="@dimen/dp_30"
+                android:layout_height="@dimen/dp_4"
+                android:layout_marginTop="@dimen/dp_4"
+                android:layout_marginBottom="@dimen/dp_10"
+                android:background="#ff5e70" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/details_recview_comments"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone">
+
+                </android.support.v7.widget.RecyclerView>
+
+                <TextView
+                    android:id="@+id/details_textview_comments"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="期待你的评论"
+                    android:textSize="@dimen/dp_26"
+                    android:visibility="gone" />
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </com.bawei.www.diofrysky.view.DetailsScrollView>>
+
+    <RelativeLayout
+        android:id="@+id/details_relat_changecolor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dp_10">
+
+        <ImageView
+            android:id="@+id/details_image_return"
+            android:layout_width="@dimen/dp_24"
+            android:layout_height="@dimen/dp_24"
+            android:layout_marginTop="@dimen/dp_10"
+            android:padding="@dimen/dp_4"
+            android:src="@mipmap/btn_back" />
+
+        <RelativeLayout
+            android:id="@+id/details_relative_changer"
+            android:layout_width="@dimen/dp_200"
+            android:layout_height="@dimen/dp_20"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/dp_15"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/details_text_goodsT"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:text="商品" />
+
+            <TextView
+                android:id="@+id/details_text_detailsT"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="详情" />
+
+            <TextView
+                android:id="@+id/details_text_commentsT"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:text="评论" />
+
+            <TextView
+                android:id="@+id/details_text_goods"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp_2"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="@dimen/dp_3"
+                android:text="　　" />
+
+            <TextView
+                android:id="@+id/details_text_details"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp_2"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="@dimen/dp_3"
+                android:text="　　" />
+
+            <TextView
+                android:id="@+id/details_text_comments"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp_2"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="@dimen/dp_3"
+                android:text="　　" />
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/details_relative_addshoppingcar"
+        android:layout_width="@dimen/dp_50"
+        android:layout_height="@dimen/dp_40"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/dp_47"
+        android:gravity="center"
+        android:padding="@dimen/dp_7"
+        android:background="@drawable/common_home_rview_item_border"
+        >
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/dp_5"
+            android:src="@mipmap/common_btn_addshopcar" />
+
+    </RelativeLayout>
+
+
+
+</RelativeLayout>

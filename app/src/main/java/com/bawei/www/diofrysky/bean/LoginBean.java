@@ -39,6 +39,11 @@ public class LoginBean {
         private int sex;
         private int userId;
 
+        public ResultBean(String sessionId, int userId) {
+            this.sessionId=sessionId;
+            this.userId=userId;
+        }
+
         public String getHeadPic() {
             return headPic;
         }

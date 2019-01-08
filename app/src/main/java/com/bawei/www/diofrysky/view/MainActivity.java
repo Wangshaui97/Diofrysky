@@ -200,6 +200,11 @@ public class MainActivity extends BaseActivity implements IView {
         LoginBean loginBean = (LoginBean) data;
         if (loginBean.getMessage().equals("登录成功")) {
             startActivity(new Intent(MainActivity.this, HomeActivity.class));
+
+            editor.putString("userId",loginBean.getResult().getUserId()+"");
+            editor.putString("sessionId",loginBean.getResult().getSessionId());
+            editor.commit();
+
         } else {
             Toast.makeText(MainActivity.this, "" + loginBean.getMessage(), Toast.LENGTH_SHORT).show();
             editor.clear();

@@ -27,6 +27,16 @@ public class IPersonter implements IP {
     }
 
     @Override
+    public void setPutRequest(String url, Map<String, String> map, Class clazz) {
+        iModel.setPutResponse(url, map, clazz, new MyCallback() {
+            @Override
+            public void setData(Object data) {
+                iView.setSuccess(data);
+            }
+        });
+    }
+
+    @Override
     public void setGetRequest(String url, Class clazz) {
         iModel.setGetResponse(url, clazz, new MyCallback() {
             @Override

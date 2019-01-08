@@ -7,6 +7,7 @@ import okhttp3.ResponseBody;
 import retrofit2.http.GET;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.PartMap;
 import retrofit2.http.QueryMap;
 import retrofit2.http.Url;
@@ -23,5 +24,8 @@ public interface BaseApis<T> {
     @Multipart
     @POST
     Observable<ResponseBody> postRequestBody(@Url String url, @PartMap Map<String, RequestBody> map);
+
+    @PUT
+    Observable<ResponseBody> put(@Url String url ,@QueryMap Map<String ,String> map);
 
 }

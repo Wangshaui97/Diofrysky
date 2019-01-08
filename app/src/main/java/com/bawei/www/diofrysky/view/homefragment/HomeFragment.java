@@ -79,9 +79,7 @@ public class HomeFragment extends Fragment implements IView {
         View view = View.inflate(getActivity(), R.layout.fragment_home, null);
         iPersonter = new IPersonter(this);
 
-
         initData();
-
 
         unbinder = ButterKnife.bind(this, view);
         return view;

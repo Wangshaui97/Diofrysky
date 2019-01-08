@@ -1,12 +1,23 @@
 package com.bawei.www.diofrysky.retrfithttp;
 
-import com.bawei.www.diofrysky.Apis;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.text.TextUtils;
 
+import com.bawei.www.diofrysky.Apis;
+import com.bawei.www.diofrysky.App;
+
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
+import okhttp3.Interceptor;
+import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 import okhttp3.ResponseBody;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
@@ -34,7 +45,32 @@ public class RetrfitHttp<T> {
         builder.connectTimeout(10, TimeUnit.SECONDS);
         builder.readTimeout(10, TimeUnit.SECONDS);
         builder.writeTimeout(10, TimeUnit.SECONDS);
-        builder.addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY));
+        builder.addInterceptor(new Interceptor() {
+                                   @Override
+                                   public Response intercept(Chain chain) throws IOException {
+
+                                       Request request = chain.request();
+
+                                       SharedPreferences sharedPreferences = App.getApplication().getSharedPreferences("user", Context.MODE_PRIVATE);
+                                       String userId = sharedPreferences.getString("userId", "");
+                                       String sessionId = sharedPreferences.getString("sessionId", "");
+
+                                       Request.Builder newBuilder = request.newBuilder();
+                                       newBuilder.method(request.method(), request.body());
+
+                                       if (!TextUtils.isEmpty(userId) && !TextUtils.isEmpty(sessionId)) {
+                                           newBuilder.addHeader("userId", userId);
+                                           newBuilder.addHeader("sessionId", sessionId);
+                                       }
+
+                                       Request build = newBuilder.build();
+
+                                       return chain.proceed(build);
+                                   }
+                               }
+
+
+        );
         builder.retryOnConnectionFailure(true);
         OkHttpClient client = builder.build();
 
@@ -48,17 +84,16 @@ public class RetrfitHttp<T> {
     }
 
 
-    public RetrfitHttp get(String url) {
+    public void get(String url, HttpListener listener) {
 
         mbaseApis.get(url)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(observer);
+                .subscribe(getobserver(listener));
 
-        return mretrfitHttp;
     }
 
-    public RetrfitHttp post(String url, Map<String, String> map) {
+    public void post(String url, Map<String, String> map, HttpListener listener) {
 
         if (map == null) {
             map = new HashMap<>();
@@ -66,41 +101,69 @@ public class RetrfitHttp<T> {
         mbaseApis.post(url, map)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(observer);
+                .subscribe(getobserver(listener));
 
-        return mretrfitHttp;
     }
 
-    public Observer observer = new Observer<ResponseBody>() {
+    public void put(String url, Map<String, String> map, HttpListener listener) {
 
-        @Override
-        public void onNext(ResponseBody responseBody) {
-            try {
-                String data = responseBody.string();
-                if (listener != null) {
-                    listener.setSuccess(data);
+        if (map == null) {
+            map = new HashMap<>();
+        }
+        mbaseApis.put(url, map)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(getobserver(listener));
+    }
+
+
+
+//    public Map<String, RequestBody> generateRequestBody(Map<String, String> requestDataMap) {
+//        Map<String, RequestBody> requestBodyMap = new HashMap<>();
+//        for (String key : requestDataMap.keySet()) {
+//            RequestBody requestBody = RequestBody.create(MediaType.parse("multipart/form-data"),
+//                    requestDataMap.get(key) == null ? "" : requestDataMap.get(key));
+//            requestBodyMap.put(key, requestBody);
+//        }
+//        return requestBodyMap;
+//    }
+//
+//
+
+    private Observer getobserver(final HttpListener listener) {
+
+        Observer observer = new Observer<ResponseBody>() {
+
+            @Override
+            public void onNext(ResponseBody responseBody) {
+                try {
+                    String data = responseBody.string();
+                    if (listener != null) {
+                        listener.setSuccess(data);
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    if (listener != null) {
+                        listener.SetField(e.getMessage());
+                    }
                 }
-            } catch (Exception e) {
-                e.printStackTrace();
+            }
+
+            @Override
+            public void onError(Throwable e) {
                 if (listener != null) {
                     listener.SetField(e.getMessage());
                 }
             }
-        }
 
-        @Override
-        public void onError(Throwable e) {
-            if (listener != null) {
-                listener.SetField(e.getMessage());
+
+            @Override
+            public void onCompleted() {
+
             }
-        }
-
-
-        @Override
-        public void onCompleted() {
-
-        }
-    };
+        };
+        return observer;
+    }
 
 
     private HttpListener listener;
