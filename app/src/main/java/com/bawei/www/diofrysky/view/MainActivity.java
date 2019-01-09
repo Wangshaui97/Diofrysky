@@ -134,15 +134,6 @@ public class MainActivity extends BaseActivity implements IView {
                 startActivity(new Intent(MainActivity.this, SignupActivity.class));
                 break;
             case R.id.login_putin_success:
-                if (loginPutinRember.isChecked()) {
-                    editor.putString("name", loginPutinName.getText().toString());
-                    editor.putString("pwd", loginPutinPwd.getText().toString());
-                    editor.putBoolean("ischecked", true);
-                    editor.commit();
-                } else {
-                    editor.clear();
-                    editor.commit();
-                }
                 Boolean s = isMobileNO(loginPutinName.getText().toString());
                 if (s == true) {
                     Map<String, String> map = new HashMap<>();
@@ -200,6 +191,16 @@ public class MainActivity extends BaseActivity implements IView {
         LoginBean loginBean = (LoginBean) data;
         if (loginBean.getMessage().equals("登录成功")) {
             startActivity(new Intent(MainActivity.this, HomeActivity.class));
+
+            if (loginPutinRember.isChecked()) {
+                editor.putString("name", loginPutinName.getText().toString());
+                editor.putString("pwd", loginPutinPwd.getText().toString());
+                editor.putBoolean("ischecked", true);
+                editor.commit();
+            } else {
+                editor.clear();
+                editor.commit();
+            }
 
             editor.putString("userId",loginBean.getResult().getUserId()+"");
             editor.putString("sessionId",loginBean.getResult().getSessionId());

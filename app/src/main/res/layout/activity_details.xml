@@ -213,7 +213,7 @@
             android:layout_height="@dimen/dp_20"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/dp_15"
-            android:visibility="gone">
+           >
 
             <TextView
                 android:id="@+id/details_text_goodsT"

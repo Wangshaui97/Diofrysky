@@ -137,7 +137,6 @@ public class HomeActivity extends BaseActivity {
     }
 
 
-
     @OnClick(R.id.home_group)
     public void onViewClicked() {
         homeGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {

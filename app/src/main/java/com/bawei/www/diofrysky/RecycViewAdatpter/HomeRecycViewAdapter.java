@@ -42,13 +42,13 @@ public class HomeRecycViewAdapter extends RecyclerView.Adapter<HomeRecycViewAdap
     @Override
     public HomeRecycViewAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         if (mindex == 0) {
-            View view = View.inflate(context, R.layout.common_home_rview_one_item, null);
+            View view = View.inflate(context, R.layout.common_home_rview_rxxp_item, null);
             return new ViewHolder(view);
         } else if (mindex == 1) {
-            View view = View.inflate(context, R.layout.common_home_rview_two_item, null);
+            View view = View.inflate(context, R.layout.common_home_rview_mlss_item, null);
             return new ViewHolder(view);
         } else if (mindex == 2) {
-            View view = View.inflate(context, R.layout.common_home_rview_three_item, null);
+            View view = View.inflate(context, R.layout.common_home_rview_pzsh_item, null);
             return new ViewHolder(view);
         }
         return null;

@@ -10,7 +10,6 @@
         android:id="@+id/people_cirle_rview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="@dimen/dp_30"
         >
     </android.support.v7.widget.RecyclerView>
 </LinearLayout>

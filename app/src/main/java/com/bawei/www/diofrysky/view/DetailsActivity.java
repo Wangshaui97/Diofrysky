@@ -109,7 +109,6 @@ public class DetailsActivity extends BaseActivity implements IView {
             @Override
             public void onScrollChange(DetailsScrollView scrollView, int l, int t, int oldl, int oldt) {
                 if (t <= 0) {
-                    detailsRelativeChanger.setVisibility(View.GONE);
                     detailsRelatChangecolor.setBackgroundColor(Color.argb(0, 0, 0, 0));
                 } else if (t > 0 && t < 200) {
                     detailsRelativeChanger.setVisibility(View.VISIBLE);

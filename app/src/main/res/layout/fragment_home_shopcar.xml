@@ -23,11 +23,12 @@
         android:background="@drawable/shopcar_bottom_card"
         >
 
-        <RadioButton
+        <CheckBox
             android:id="@+id/shopcar_checked"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="全选"
+            android:textSize="@dimen/sp_15"
             />
         <TextView
             android:id="@+id/shopcar_allmoney"
