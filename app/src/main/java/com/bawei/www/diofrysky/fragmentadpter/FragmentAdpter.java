@@ -24,6 +24,8 @@ public class FragmentAdpter extends FragmentPagerAdapter {
         this.mlist = list;
     }
 
+
+
     @Override
     public Fragment getItem(int i) {
         switch (i){

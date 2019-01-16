@@ -1,8 +1,6 @@
 package com.bawei.www.diofrysky.view.homefragment;
 
-
-import android.content.Context;
-import android.content.SharedPreferences;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -12,23 +10,29 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.LinearLayout;
-import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bawei.www.diofrysky.Apis;
-import com.bawei.www.diofrysky.App;
 import com.bawei.www.diofrysky.R;
 import com.bawei.www.diofrysky.RecycViewAdatpter.ShopCarRviewAdapter;
+import com.bawei.www.diofrysky.bean.IndentAlllsitBean;
+import com.bawei.www.diofrysky.bean.LoginBean;
+import com.bawei.www.diofrysky.bean.SerchSaveIntentBean;
+import com.bawei.www.diofrysky.bean.SerchSaveShopCarBean;
 import com.bawei.www.diofrysky.bean.ShopCarBean;
 import com.bawei.www.diofrysky.presonter.IPersonter;
-import com.bawei.www.diofrysky.retrfithttp.HttpUtil;
 import com.bawei.www.diofrysky.view.IView;
+import com.bawei.www.diofrysky.view.PayIndentActivity;
+import com.bawei.www.diofrysky.view.indentfragment.AlllsitFragment;
 import com.google.gson.Gson;
 
+import org.greenrobot.eventbus.EventBus;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -51,6 +55,7 @@ public class ShopCarFragment extends Fragment implements IView {
     private List<ShopCarBean.ResultBean> mlist = new ArrayList<>();
 
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -70,7 +75,7 @@ public class ShopCarFragment extends Fragment implements IView {
             @Override
             public void setSuccess(List<ShopCarBean.ResultBean> list) {
 
-                double price = 0;
+               double price = 0;
                 boolean flag = true;
 
                 for (int i = 0; i < list.size(); i++) {
@@ -80,6 +85,7 @@ public class ShopCarFragment extends Fragment implements IView {
                         flag = false;
                     }
                 }
+
                 if (flag == false) {
                     shopcarChecked.setChecked(false);
                 } else if (flag == true) {
@@ -92,10 +98,12 @@ public class ShopCarFragment extends Fragment implements IView {
 
     @Override
     public void setSuccess(Object data) {
-        ShopCarBean shopCarBean = (ShopCarBean) data;
-        //Toast.makeText(getActivity(),""+shopCarBean.getMessage(),Toast.LENGTH_SHORT).show();
-        mlist = shopCarBean.getResult();
-        shopCarRviewAdapter.setData(mlist);
+     if(data instanceof ShopCarBean){
+         ShopCarBean shopCarBean = (ShopCarBean) data;
+         //Toast.makeText(getActivity(),""+shopCarBean.getMessage(),Toast.LENGTH_SHORT).show();
+         mlist = shopCarBean.getResult();
+         shopCarRviewAdapter.setData(mlist);
+     }
     }
 
     @Override
@@ -111,9 +119,24 @@ public class ShopCarFragment extends Fragment implements IView {
                 checkSeller(shopcarChecked.isChecked());
                 break;
             case R.id.shopcar_payallmoney:
+                boolean flag1=false;
+                for (int i = 0; i <mlist.size() ; i++) {
+                    if(mlist.get(i).isIschecked()){
+                       flag1=true;
+                       break;
+                    }
+                }
+                if(flag1==true){
+                    EventBus.getDefault().postSticky(mlist);
+                    startActivity(new Intent(getActivity(),PayIndentActivity.class));
+                }else {
+                    Toast.makeText(getActivity(),"请选择商品！",Toast.LENGTH_SHORT).show();
+                }
                 break;
         }
     }
+
+
 
     private void checkSeller(boolean checked) {
 
@@ -133,5 +156,18 @@ public class ShopCarFragment extends Fragment implements IView {
             shopcarAllmoney.setText("总价为：￥ 0. 00");
         }
 
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+//        if(resultCode==100){
+//            for (int i = 0; i <mlist.size() ; i++) {
+//                if(mlist.get(i).isIschecked()){
+//                    mlist.remove(i);
+//            }
+//            }
+//            shopCarRviewAdapter.setData(mlist);
+//        }
     }
 }

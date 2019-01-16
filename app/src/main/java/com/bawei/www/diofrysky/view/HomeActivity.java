@@ -1,6 +1,6 @@
 package com.bawei.www.diofrysky.view;
 
-import android.os.Bundle;
+
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -16,19 +16,19 @@ import com.bawei.www.diofrysky.view.homefragment.IndentFragment;
 import com.bawei.www.diofrysky.view.homefragment.MineFragment;
 import com.bawei.www.diofrysky.view.homefragment.PeopleCircleFragment;
 import com.bawei.www.diofrysky.view.homefragment.ShopCarFragment;
+import com.bawei.www.diofrysky.view.indentfragment.ViewPagerSlide;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 public class HomeActivity extends BaseActivity {
 
 
     @BindView(R.id.home_pager)
-    ViewPager homePager;
+    ViewPagerSlide homePager;
     @BindView(R.id.home_group)
     RadioGroup homeGroup;
     @BindView(R.id.hoem_btn_home)
@@ -41,14 +41,13 @@ public class HomeActivity extends BaseActivity {
     RadioButton hoemBtnMine;
     @BindView(R.id.hoem_btn_shopcar)
     RadioButton hoemBtnShopcar;
-    private FragmentAdpter fragmentAdpter;
     private List<Fragment> mlist;
-
 
     @Override
     protected int initContextView() {
         return R.layout.activity_home;
     }
+
 
     @Override
     protected void initView() {
@@ -69,7 +68,6 @@ public class HomeActivity extends BaseActivity {
         mlist.add(new ShopCarFragment());
         mlist.add(new IndentFragment());
         mlist.add(new MineFragment());
-        //fragmentAdpter = new FragmentAdpter(getSupportFragmentManager(),this,mlist);
         homePager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
             @Override
             public Fragment getItem(int i) {
@@ -81,64 +79,8 @@ public class HomeActivity extends BaseActivity {
                 return mlist.size();
             }
         });
-        homePager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int i, float v, int i1) {
+        homePager.setSlide(false);
 
-            }
-
-            @Override
-            public void onPageSelected(int i) {
-                switch (i) {
-                    case 0:
-                        hoemBtnHome.setChecked(true);
-                        hoemBtnCircle.setChecked(false);
-                        hoemBtnShopcar.setChecked(false);
-                        hoemBtnIndent.setChecked(false);
-                        hoemBtnMine.setChecked(false);
-                        break;
-                    case 1:
-                        hoemBtnHome.setChecked(false);
-                        hoemBtnCircle.setChecked(true);
-                        hoemBtnShopcar.setChecked(false);
-                        hoemBtnIndent.setChecked(false);
-                        hoemBtnMine.setChecked(false);
-                        break;
-                    case 2:
-                        hoemBtnHome.setChecked(false);
-                        hoemBtnCircle.setChecked(false);
-                        hoemBtnShopcar.setChecked(true);
-                        hoemBtnIndent.setChecked(false);
-                        hoemBtnMine.setChecked(false);
-                        break;
-                    case 3:
-                        hoemBtnHome.setChecked(false);
-                        hoemBtnCircle.setChecked(false);
-                        hoemBtnShopcar.setChecked(false);
-                        hoemBtnIndent.setChecked(true);
-                        hoemBtnMine.setChecked(false);
-                        break;
-                    case 4:
-                        hoemBtnHome.setChecked(false);
-                        hoemBtnCircle.setChecked(false);
-                        hoemBtnShopcar.setChecked(false);
-                        hoemBtnIndent.setChecked(false);
-                        hoemBtnMine.setChecked(true);
-                        break;
-                }
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int i) {
-
-            }
-        });
-
-    }
-
-
-    @OnClick(R.id.home_group)
-    public void onViewClicked() {
         homeGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -162,6 +104,59 @@ public class HomeActivity extends BaseActivity {
             }
         });
     }
-
-
 }
+
+//     ViewPager 滑动
+
+//        homePager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+//            @Override
+//            public void onPageScrolled(int i, float v, int i1) {
+//
+//            }
+//
+//            @Override
+//            public void onPageSelected(int i) {
+//                switch (i) {
+//                    case 0:
+//                        hoemBtnHome.setChecked(true);
+//                        hoemBtnCircle.setChecked(false);
+//                        hoemBtnShopcar.setChecked(false);
+//                        hoemBtnIndent.setChecked(false);
+//                        hoemBtnMine.setChecked(false);
+//                        break;
+//                    case 1:
+//                        hoemBtnHome.setChecked(false);
+//                        hoemBtnCircle.setChecked(true);
+//                        hoemBtnShopcar.setChecked(false);
+//                        hoemBtnIndent.setChecked(false);
+//                        hoemBtnMine.setChecked(false);
+//                        break;
+//                    case 2:
+//                        hoemBtnHome.setChecked(false);
+//                        hoemBtnCircle.setChecked(false);
+//                        hoemBtnShopcar.setChecked(true);
+//                        hoemBtnIndent.setChecked(false);
+//                        hoemBtnMine.setChecked(false);
+//                        break;
+//                    case 3:
+//                        hoemBtnHome.setChecked(false);
+//                        hoemBtnCircle.setChecked(false);
+//                        hoemBtnShopcar.setChecked(false);
+//                        hoemBtnIndent.setChecked(true);
+//                        hoemBtnMine.setChecked(false);
+//                        break;
+//                    case 4:
+//                        hoemBtnHome.setChecked(false);
+//                        hoemBtnCircle.setChecked(false);
+//                        hoemBtnShopcar.setChecked(false);
+//                        hoemBtnIndent.setChecked(false);
+//                        hoemBtnMine.setChecked(true);
+//                        break;
+//                }
+//            }
+//
+//            @Override
+//            public void onPageScrollStateChanged(int i) {
+//
+//            }
+//        });

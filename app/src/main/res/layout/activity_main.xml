@@ -51,7 +51,7 @@
             android:id="@+id/login_putin_pwd_hind"
             android:layout_width="@dimen/dp_60"
             android:layout_height="@dimen/dp_60"
-            android:padding="30dp"
+            android:padding="@dimen/dp_20"
             android:src="@mipmap/login_eye" />
     </LinearLayout>
 

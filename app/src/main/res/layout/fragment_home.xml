@@ -75,9 +75,9 @@
                 android:layout_marginRight="@dimen/dp_24"
                 android:clipChildren="false"
                 app:AutoPlayTime="3000"
-                app:isShowIndicatorOnlyOne="false"
+                app:isShowIndicatorOnlyOne="true"
                 app:isShowNumberIndicator="true"
-                app:pageChangeDuration="800" />
+                app:pageChangeDuration="1200" />
 
         </LinearLayout>
 
@@ -217,10 +217,10 @@
         android:orientation="vertical"
         >
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/dp_180"
+            android:layout_height="@dimen/dp_180"
             android:layout_gravity="center"
-            android:layout_marginTop="@dimen/dp_100"
+            android:layout_marginTop="@dimen/dp_70"
             android:src="@mipmap/home_img_none_nothing"
             />
         <TextView

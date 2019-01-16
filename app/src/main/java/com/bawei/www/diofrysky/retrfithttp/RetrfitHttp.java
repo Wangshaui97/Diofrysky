@@ -7,13 +7,16 @@ import android.text.TextUtils;
 import com.bawei.www.diofrysky.Apis;
 import com.bawei.www.diofrysky.App;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.Interceptor;
 import okhttp3.MediaType;
+import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
@@ -92,7 +95,14 @@ public class RetrfitHttp<T> {
                 .subscribe(getobserver(listener));
 
     }
+    public void del(String url, HttpListener listener) {
 
+        mbaseApis.del(url)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(getobserver(listener));
+
+    }
     public void post(String url, Map<String, String> map, HttpListener listener) {
 
         if (map == null) {
@@ -104,6 +114,23 @@ public class RetrfitHttp<T> {
                 .subscribe(getobserver(listener));
 
     }
+
+    public void postFormBodyObject(String url, Map<String,Object> params, List<Object> list,HttpListener listener){
+        MultipartBody.Builder builder = new MultipartBody.Builder().setType(MultipartBody.FORM);
+        if (list.size()==1) {
+            for (int i = 0; i < list.size(); i++) {
+                File file = new File((String) list.get(i));
+                builder.addFormDataPart("image", file.getName(),RequestBody.create(MediaType.parse("multipart/octet-stream"),file));
+            }
+        }
+        mbaseApis.Image(url,params,builder.build())
+                .subscribeOn(Schedulers.io
+
+                        ())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(getobserver(listener));
+    }
+
 
     public void put(String url, Map<String, String> map, HttpListener listener) {
 

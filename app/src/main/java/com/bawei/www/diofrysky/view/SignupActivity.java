@@ -61,6 +61,7 @@ public class SignupActivity extends BaseActivity implements IView {
 
     @Override
     public void setSuccess(Object data) {
+
         LoginBean loginBean = (LoginBean) data;
         if(loginBean.getMessage().equals("注册成功")){
             Toast.makeText(SignupActivity.this,loginBean.getMessage()+",您可以登录了",Toast.LENGTH_SHORT).show();

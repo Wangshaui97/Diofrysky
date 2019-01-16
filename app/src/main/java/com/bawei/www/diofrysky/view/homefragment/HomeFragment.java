@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -159,7 +160,7 @@ public class HomeFragment extends Fragment implements IView {
 
             if (result != null) {
                 serchViewAdapter = new SerchViewAdapter(getActivity());
-                commonHomeRviewSerch.setLayoutManager(new GridLayoutManager(getActivity(), 2));
+                commonHomeRviewSerch.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
                 commonHomeRviewSerch.setAdapter(serchViewAdapter);
                 serchViewAdapter.setData(result);
 

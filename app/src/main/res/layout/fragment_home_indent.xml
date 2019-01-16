@@ -3,7 +3,112 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
+    android:padding="@dimen/dp_10"
     tools:context=".view.homefragment.HomeFragment">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_80"
+        android:background="@drawable/shopcar_bottom_card"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_40"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/dp_10"
+            >
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/indent_btn_all"
+                android:layout_width="@dimen/dp_40"
+                android:layout_height="@dimen/dp_40"
+                android:layout_weight="1"
+                app:placeholderImage="@mipmap/common_icon_alllist"
+                />
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/indent_btn_nopay"
+                android:layout_width="@dimen/dp_40"
+                android:layout_height="@dimen/dp_40"
+                android:layout_weight="1"
+                app:placeholderImage="@mipmap/common_icon_pay"
+                />
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/indent_btn_nothing"
+                android:layout_width="@dimen/dp_40"
+                android:layout_height="@dimen/dp_40"
+                android:layout_weight="1"
+                app:placeholderImage="@mipmap/common_icon_receive"
+                />
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/indent_btn_talck"
+                android:layout_width="@dimen/dp_40"
+                android:layout_height="@dimen/dp_40"
+                android:layout_weight="1"
+                app:placeholderImage="@mipmap/commom_icon_comment"
+                />
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/indent_btn_finish"
+                android:layout_width="@dimen/dp_40"
+                android:layout_height="@dimen/dp_40"
+                android:layout_weight="1"
+                app:placeholderImage="@mipmap/common_icon_finish"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_30"
+            android:orientation="horizontal"
+
+            >
+            <TextView
+                android:layout_width="@dimen/dp_40"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal"
+                android:layout_weight="1"
+                android:text="全部订单"
+                />
+            <TextView
+                android:layout_width="@dimen/dp_40"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal"
+                android:layout_weight="1"
+                android:text="待付款"
+                />
+            <TextView
+                android:layout_width="@dimen/dp_40"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal"
+                android:layout_weight="1"
+                android:text="待收货"
+                />
+            <TextView
+                android:layout_width="@dimen/dp_40"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal"
+                android:layout_weight="1"
+                android:text="待评价"
+                />
+            <TextView
+                android:layout_width="@dimen/dp_40"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal"
+                android:layout_weight="1"
+                android:text="已完成"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <com.bawei.www.diofrysky.view.indentfragment.ViewPagerSlide
+        android:id="@+id/indent_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/dp_5"
+        >
+    </com.bawei.www.diofrysky.view.indentfragment.ViewPagerSlide>
 </LinearLayout>

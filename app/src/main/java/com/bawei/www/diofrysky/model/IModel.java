@@ -6,6 +6,7 @@ import com.bawei.www.diofrysky.callback.MyCallback;
 import com.bawei.www.diofrysky.retrfithttp.RetrfitHttp;
 import com.google.gson.Gson;
 
+import java.util.List;
 import java.util.Map;
 
 public class IModel implements IM {
@@ -72,6 +73,50 @@ public class IModel implements IM {
             @Override
             public void SetField(String e) {
                 Log.d("WS",e);
+            }
+        });
+    }
+
+    @Override
+    public void setDelResponse(String url, final Class clazz, final MyCallback myCallback) {
+        RetrfitHttp.getInsetens().del(url,new RetrfitHttp.HttpListener() {
+            @Override
+            public void setSuccess(String data) {
+                try {
+                    Object obj=new Gson().fromJson(data,clazz);
+                    if(myCallback!=null){
+                        myCallback.setData(obj);
+                    }
+                }catch (Exception e){
+                    Log.d("WS","111"+e);
+                }
+            }
+
+            @Override
+            public void SetField(String e) {
+                Log.d("WS",e);
+            }
+        });
+    }
+
+    @Override
+    public void getimgtitle(String url, Map<String, Object> map, List<Object> list, final Class clazz, final MyCallback myCallback) {
+        RetrfitHttp.getInsetens().postFormBodyObject(url, map, list, new RetrfitHttp.HttpListener() {
+            @Override
+            public void setSuccess(String data) {
+                try {
+                    Object obj=new Gson().fromJson(data,clazz);
+                    if(myCallback!=null){
+                        myCallback.setData(obj);
+                    }
+                }catch (Exception e){
+                    Log.d("WS","111"+e);
+                }
+            }
+
+            @Override
+            public void SetField(String e) {
+
             }
         });
     }

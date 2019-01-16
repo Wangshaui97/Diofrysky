@@ -43,7 +43,7 @@
 
         <Button
             android:id="@+id/shopcar_payallmoney"
-            android:layout_width="120dp"
+            android:layout_width="@dimen/dp_120"
             android:layout_height="match_parent"
             android:background="@drawable/shopcar_btn_pay"
             android:text="结算"

@@ -84,9 +84,7 @@ public class MainActivity extends BaseActivity implements IView {
 //            } else {
 //            }
 //        } else {
-//
 //        }
-
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             String[] mPermissionList = new String[]{
                     Manifest.permission.WRITE_EXTERNAL_STORAGE,
@@ -201,17 +199,15 @@ public class MainActivity extends BaseActivity implements IView {
                 editor.clear();
                 editor.commit();
             }
-
-            editor.putString("userId",loginBean.getResult().getUserId()+"");
-            editor.putString("sessionId",loginBean.getResult().getSessionId());
+            editor.putString("userId", loginBean.getResult().getUserId() + "");
+            editor.putString("sessionId", loginBean.getResult().getSessionId());
             editor.commit();
+            EventBus.getDefault().postSticky(loginBean.getResult());
 
-        } else {
+        }else {
             Toast.makeText(MainActivity.this, "" + loginBean.getMessage(), Toast.LENGTH_SHORT).show();
             editor.clear();
             editor.commit();
         }
-
     }
-
 }
