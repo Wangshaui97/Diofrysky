@@ -14,6 +14,7 @@ import com.bawei.www.diofrysky.RecycViewAdatpter.IndentRviewitemAdapter;
 import com.bawei.www.diofrysky.RecycViewAdatpter.PayIndentAdapter;
 import com.bawei.www.diofrysky.RecycViewAdatpter.ShopCarRviewAdapter;
 import com.bawei.www.diofrysky.base.BaseActivity;
+import com.bawei.www.diofrysky.bean.AdressBean;
 import com.bawei.www.diofrysky.bean.LoginBean;
 import com.bawei.www.diofrysky.bean.PayIndentBean;
 import com.bawei.www.diofrysky.bean.SerchSaveIntentBean;
@@ -51,6 +52,7 @@ public class PayIndentActivity extends BaseActivity implements IView {
     private List<SerchSaveIntentBean> slist;
     private double price;
     private List<ShopCarBean.ResultBean> nlist;
+    private int id;
 
     @Override
     protected int initContextView() {
@@ -62,6 +64,7 @@ public class PayIndentActivity extends BaseActivity implements IView {
         EventBus.getDefault().register(this);
         ButterKnife.bind(this);
         iPersonter = new IPersonter(this);
+        iPersonter.setGetRequest(Apis.SEARCH_ADRESS,AdressBean.class);
     }
 
     @Override
@@ -104,7 +107,7 @@ public class PayIndentActivity extends BaseActivity implements IView {
         Map<String, String> map = new HashMap<>();
         map.put("orderInfo", toJson);
         map.put("totalPrice", price + "");
-        map.put("addressId", "254");
+        map.put("addressId", ""+id);
         iPersonter.setPostRequest(Apis.PUTIN_INDENT, map, LoginBean.class);
         setResult(100);
         finish();
@@ -112,8 +115,18 @@ public class PayIndentActivity extends BaseActivity implements IView {
 
     @Override
     public void setSuccess(Object data) {
-        LoginBean loginBean = (LoginBean) data;
-        Toast.makeText(PayIndentActivity.this, "" + loginBean.getMessage(), Toast.LENGTH_SHORT).show();
+       if(data instanceof LoginBean){
+           LoginBean loginBean = (LoginBean) data;
+           Toast.makeText(PayIndentActivity.this, "" + loginBean.getMessage(), Toast.LENGTH_SHORT).show();
 
+       }else if(data instanceof AdressBean){
+           AdressBean adressBean = (AdressBean) data;
+           List<AdressBean.ResultBean> result = adressBean.getResult();
+           for (int i = 0; i <result.size() ; i++) {
+             // if(result.get(i).isChecked()){
+                   id = result.get(i).getId();
+              // }
+           }
+       }
     }
 }

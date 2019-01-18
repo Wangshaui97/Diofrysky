@@ -44,7 +44,7 @@ public class IModel implements IM {
                         myCallback.setData(obj);
                     }
                 }catch (Exception e){
-                    Log.d("WS","111"+e);
+                    Log.d("WS","gson解析失败："+e);
                 }
             }
 

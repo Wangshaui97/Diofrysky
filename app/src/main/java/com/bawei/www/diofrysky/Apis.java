@@ -23,19 +23,23 @@ public class Apis {
 
     public static String SEARCH_SHOPCAR = "order/verify/v1/findShoppingCart";
 
-    public static String PUTIN_INDENT="order/verify/v1/createOrder";
+    public static String PUTIN_INDENT = "order/verify/v1/createOrder";
 
-    public static String SEARCH_INDENT="order/verify/v1/findOrderListByStatus?status=0&page=%s&count=5";
+    public static String SEARCH_INDENT = "order/verify/v1/findOrderListByStatus?status=0&page=%s&count=5";
 
-    public static String SEARCH_INDENT_NOPAY="order/verify/v1/findOrderListByStatus?status=1&page=%s&count=5";
+    public static String SEARCH_INDENT_NOPAY = "order/verify/v1/findOrderListByStatus?status=%s&page=%s&count=5";
 
-    public static String DELETE_INDENT="order/verify/v1/deleteOrder?orderId=%s";
+    public static String SEARCH_ADRESS = "user/verify/v1/receiveAddressList";
 
-    public static String PAY_FOR_INDENT="order/verify/v1/pay";
+    public static String DELETE_INDENT = "order/verify/v1/deleteOrder?orderId=%s";
 
-    public static String MINE_CRICLE="circle/verify/v1/findMyCircleById?page=1&count=5";
+    public static String PAY_FOR_INDENT = "order/verify/v1/pay";
 
-    public static String MINE_FOODS="commodity/verify/v1/browseList?page=1&count=5";
+    public static String MINE_CRICLE = "circle/verify/v1/findMyCircleById?page=1&count=5";
 
-    public static String PUSH_HANDIMG="user/verify/v1/modifyHeadPic";
+    public static String MINE_FOODS = "commodity/verify/v1/browseList?page=1&count=5";
+
+    public static String PUSH_HANDIMG = "user/verify/v1/modifyHeadPic";
+
+    public static String changeName = "user/verify/v1/modifyUserNick";
 }

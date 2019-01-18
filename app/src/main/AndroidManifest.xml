@@ -3,6 +3,8 @@
     package="com.bawei.www.diofrysky">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:name=".App"
@@ -25,7 +27,9 @@
         <activity android:name=".view.PayIndentActivity" />
         <activity android:name=".view.mineacvivity.MinedataActivity" />
         <activity android:name=".view.mineacvivity.MineCiecleActivity" />
-        <activity android:name=".view.mineacvivity.MinefoodActivity"></activity>
+        <activity android:name=".view.mineacvivity.MinefoodActivity" />
+        <activity android:name=".view.mineacvivity.MineAdressActivity" />
+        <activity android:name=".view.mineacvivity.NewAddressActivity"></activity>
     </application>
 
 </manifest>

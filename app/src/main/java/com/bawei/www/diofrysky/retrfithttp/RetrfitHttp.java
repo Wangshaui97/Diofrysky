@@ -116,6 +116,7 @@ public class RetrfitHttp<T> {
     }
 
     public void postFormBodyObject(String url, Map<String,Object> params, List<Object> list,HttpListener listener){
+
         MultipartBody.Builder builder = new MultipartBody.Builder().setType(MultipartBody.FORM);
         if (list.size()==1) {
             for (int i = 0; i < list.size(); i++) {
@@ -123,10 +124,9 @@ public class RetrfitHttp<T> {
                 builder.addFormDataPart("image", file.getName(),RequestBody.create(MediaType.parse("multipart/octet-stream"),file));
             }
         }
-        mbaseApis.Image(url,params,builder.build())
-                .subscribeOn(Schedulers.io
 
-                        ())
+        mbaseApis.Image(url,params,builder.build())
+                .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(getobserver(listener));
     }

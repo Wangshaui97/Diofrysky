@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="wrap_content">
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="#fff"
+        app:cardCornerRadius="@dimen/dp_8"
+        app:cardElevation="@dimen/dp_8"
+        app:cardUseCompatPadding="true"
+        app:contentPadding="@dimen/dp_8"
+        >
+
+    <RelativeLayout
+        android:id="@+id/rr"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_120"
+        android:layout_below="@id/alllist_item_orderId"
+        android:background="@drawable/shopcar_bottom_card"
+        >
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/alllist_item_img"
+            android:layout_width="@dimen/dp_90"
+            android:layout_height="@dimen/dp_110"
+            android:layout_margin="@dimen/dp_5"
+            />
+        <TextView
+            android:id="@+id/alllist_item_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/alllist_item_img"
+            android:layout_margin="@dimen/dp_5"
+            android:text="111"
+            />
+    </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+</android.support.constraint.ConstraintLayout>

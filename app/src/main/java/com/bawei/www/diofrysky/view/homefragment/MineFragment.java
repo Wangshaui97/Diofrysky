@@ -1,6 +1,7 @@
 package com.bawei.www.diofrysky.view.homefragment;
 
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -11,9 +12,11 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,9 +28,12 @@ import com.bawei.www.diofrysky.bean.LoginBean;
 import com.bawei.www.diofrysky.presonter.IPersonter;
 import com.bawei.www.diofrysky.view.IView;
 import com.bawei.www.diofrysky.view.ImageUtil;
+import com.bawei.www.diofrysky.view.mineacvivity.MineAdressActivity;
 import com.bawei.www.diofrysky.view.mineacvivity.MineCiecleActivity;
 import com.bawei.www.diofrysky.view.mineacvivity.MinedataActivity;
 import com.bawei.www.diofrysky.view.mineacvivity.MinefoodActivity;
+import com.facebook.drawee.backends.pipeline.Fresco;
+import com.facebook.drawee.interfaces.DraweeController;
 import com.facebook.drawee.view.SimpleDraweeView;
 
 import org.greenrobot.eventbus.EventBus;
@@ -109,12 +115,11 @@ public class MineFragment extends Fragment implements IView {
 
     @OnClick({R.id.my_icon_information, R.id.my_icon_circle,
             R.id.my_icon_foot, R.id.my_icon_wallet, R.id.my_icon_address,
-            R.id.home_mine_userhandimg})
+            R.id.home_mine_userhandimg,R.id.home_mine_username})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.my_icon_information:
                 startActivity(new Intent(getActivity(), MinedataActivity.class));
-
                 break;
             case R.id.my_icon_circle:
                 startActivity(new Intent(getActivity(), MineCiecleActivity.class));
@@ -125,11 +130,34 @@ public class MineFragment extends Fragment implements IView {
             case R.id.my_icon_wallet:
                 break;
             case R.id.my_icon_address:
+                startActivity(new Intent(getActivity(),MineAdressActivity.class));
                 break;
             case R.id.home_mine_userhandimg:
                 Intent intent = new Intent(Intent.ACTION_PICK);
                 intent.setType("image/*");
                 startActivityForResult(intent, 0);
+                break;
+            case R.id.home_mine_username:
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                builder.setTitle("请输入");
+                final View view1 = View.inflate(getActivity(), R.layout.alert_dialog, null);
+                builder.setView(view1);
+                builder.setMessage("请输入你要修改的名称");
+                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        EditText editText = view1.findViewById(R.id.username);
+                        if(!editText.getText().toString().equals("")){
+                            Map<String,String> map = new HashMap<>();
+                            map.put("nickName",editText.getText().toString());
+                            iPersonter.setPutRequest(Apis.changeName,map,LoginBean.class);
+                            homeMineUsername.setText(editText.getText().toString());
+                        }
+
+                    }
+                });
+                builder.show();
+
                 break;
         }
     }
@@ -152,14 +180,44 @@ public class MineFragment extends Fragment implements IView {
             list.add(filePath);
             iPersonter.getrequestimgtitle(Apis.PUSH_HANDIMG,map,list,HandimgBean.class);
         }
+//
+//        if(requestCode==0&&resultCode==RESULT_OK){
+//            Bitmap bitmap=data.getParcelableExtra("data");
+//            //将图片保存为文件
+//            File file = new File(createImageFilePath());
+//            try {
+//                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, new FileOutputStream(file));
+//            } catch (FileNotFoundException e) {
+//                e.printStackTrace();
+//            }
+//            //缩放减小分辨率影响图片文件大小，加载到内存中占用的大小
+//            // 压缩降低图片质量 不影响分辨率， 影响图片文件大小，加载到内存中占用的大小不变
+//            //缩放（调用ImageUtil中的缩放方法）
+//            Bitmap bitmap1 = ImageUtil.scaleBitmap(file.getAbsolutePath(), 100, 100);
+//            //压缩（调用ImageUtil中的压缩方法）
+//            ImageUtil.compressImage(bitmap1, 70, file.getAbsolutePath());
+//            //加载最终图片结果
+//            bitmap = BitmapFactory.decodeFile(file.getAbsolutePath());
+//            //设置图片
+//           // personalImage.setImageBitmap(bitmap);
+//
+//            String filePath = getFilePath(null,requestCode,data);
+//            /**
+//             * 这里是用的上传头像
+//             */
+//            Map<String, Object> map = new HashMap<>();
+//            List<Object> list =new ArrayList<>();
+//            list.add(filePath);
+//            iPersonter.getrequestimgtitle(Apis.PUSH_HANDIMG,map,list,HandimgBean.class);
+//        }
+
+
 
 
     }
 
     private String createImageFilePath() {
         //裁剪之后的图片（每裁剪一次会覆盖之前的裁剪图片）
-
-
 
         return Environment.getExternalStorageDirectory().getAbsolutePath() + "/t.png";
 
@@ -188,8 +246,18 @@ public class MineFragment extends Fragment implements IView {
 
     @Override
     public void setSuccess(Object data) {
-        HandimgBean handimgBean = (HandimgBean) data;
-        Toast.makeText(getActivity(),""+handimgBean.getMessage(),Toast.LENGTH_SHORT).show();
-        homeMineUserhandimg.setImageURI(Uri.parse(handimgBean.getHeadPath()));
+       if(data instanceof HandimgBean){
+           HandimgBean handimgBean = (HandimgBean) data;
+           Toast.makeText(getActivity(),""+handimgBean.getMessage(),Toast.LENGTH_SHORT).show();
+//        homeMineUserhandimg.setImageURI(Uri.parse(handimgBean.getHeadPath()));
+           String headPath = handimgBean.getHeadPath();
+           DraweeController controller = Fresco.newDraweeControllerBuilder()
+                   .setUri(headPath)
+                   .build();
+           homeMineUserhandimg.setController(controller);
+       }else if(data instanceof  LoginBean){
+           LoginBean loginBean = (LoginBean) data;
+           Toast.makeText(getActivity(),""+loginBean.getMessage(),Toast.LENGTH_SHORT).show();
+       }
     }
 }

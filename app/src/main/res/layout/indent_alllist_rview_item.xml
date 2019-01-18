@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="#fff"
+        app:cardCornerRadius="@dimen/dp_8"
+        app:cardElevation="@dimen/dp_8"
+        app:cardUseCompatPadding="true"
+        app:contentPadding="@dimen/dp_8"
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <TextView
+                android:id="@+id/alllist_item_orderId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="订单号    "
+                />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/alllist_item_rview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/alllist_item_orderId"
+                >
+            </android.support.v7.widget.RecyclerView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp_20"
+                android:text="所选商品共需要支付："
+                android:layout_below="@id/alllist_item_rview"
+                android:layout_marginTop="@dimen/dp_20"
+                android:layout_toLeftOf="@id/alllist_item_price"
+                />
+            <TextView
+                android:id="@+id/alllist_item_price"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp_20"
+                android:text="111"
+                android:textColor="#f90000"
+                android:layout_below="@id/alllist_item_rview"
+                android:layout_marginTop="@dimen/dp_20"
+                android:layout_toLeftOf="@id/tt"
+                />
+            <TextView
+                android:id="@+id/tt"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp_20"
+                android:text="元"
+                android:layout_below="@id/alllist_item_rview"
+                android:layout_marginTop="@dimen/dp_20"
+                android:layout_alignParentRight="true"
+                />
+
+            <Button
+                android:id="@+id/indent_item_pay"
+                android:layout_width="@dimen/dp_100"
+                android:layout_height="@dimen/dp_40"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/tt"
+                android:text="去支付"
+                android:textColor="#fff"
+                android:textSize="@dimen/sp_20"
+                android:background="@drawable/shopcar_btn_pay"
+                />
+
+            <Button
+                android:id="@+id/indent_item_del"
+                android:layout_width="@dimen/dp_100"
+                android:layout_height="@dimen/dp_40"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/tt"
+                android:text="删除订单"
+                android:textColor="#000000"
+                android:textSize="@dimen/sp_17"
+                />
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+
+</android.support.constraint.ConstraintLayout>

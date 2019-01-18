@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="#fff"
+        app:cardCornerRadius="@dimen/dp_8"
+        app:cardElevation="@dimen/dp_8"
+        app:cardUseCompatPadding="true"
+        app:contentPadding="@dimen/dp_8"
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/people_cirle_handimg"
+                android:layout_width="@dimen/dp_80"
+                android:layout_height="@dimen/dp_80"
+                app:roundAsCircle="true"
+                app:placeholderImage="@mipmap/ic_launcher"
+                />
+            <TextView
+                android:id="@+id/people_cirle_handname"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp_80"
+                android:layout_toRightOf="@id/people_cirle_handimg"
+                android:text="11111"
+                android:gravity="center"
+                android:textSize="@dimen/sp_14"
+                />
+            <TextView
+                android:id="@+id/people_cirle_handtime"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp_80"
+                android:layout_alignParentRight="true"
+                android:text="111"
+                android:textSize="@dimen/sp_14"
+                android:gravity="center"
+                />
+            <TextView
+                android:id="@+id/people_cirle_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="111"
+                android:layout_below="@id/people_cirle_handimg"
+                android:layout_marginTop="@dimen/dp_10"
+                android:textSize="@dimen/sp_14"
+                />
+            <ImageView
+                android:id="@+id/people_cirle_img"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_10"
+                android:layout_below="@id/people_cirle_title"
+                android:src="@mipmap/ic_launcher"
+                />
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+</android.support.constraint.ConstraintLayout>

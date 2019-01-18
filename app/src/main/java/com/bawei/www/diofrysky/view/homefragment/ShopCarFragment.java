@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.bawei.www.diofrysky.Apis;
 import com.bawei.www.diofrysky.R;
 import com.bawei.www.diofrysky.RecycViewAdatpter.ShopCarRviewAdapter;
+import com.bawei.www.diofrysky.bean.AdressBean;
 import com.bawei.www.diofrysky.bean.IndentAlllsitBean;
 import com.bawei.www.diofrysky.bean.LoginBean;
 import com.bawei.www.diofrysky.bean.SerchSaveIntentBean;
