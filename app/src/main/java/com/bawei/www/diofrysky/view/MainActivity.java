@@ -204,6 +204,7 @@ public class MainActivity extends BaseActivity implements IView {
             editor.commit();
             EventBus.getDefault().postSticky(loginBean.getResult());
 
+            finish();
         }else {
             Toast.makeText(MainActivity.this, "" + loginBean.getMessage(), Toast.LENGTH_SHORT).show();
             editor.clear();

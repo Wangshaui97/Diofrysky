@@ -42,4 +42,6 @@ public class Apis {
     public static String PUSH_HANDIMG = "user/verify/v1/modifyHeadPic";
 
     public static String changeName = "user/verify/v1/modifyUserNick";
+
+    public static String shou_Path ="order/verify/v1/confirmReceipt";
 }

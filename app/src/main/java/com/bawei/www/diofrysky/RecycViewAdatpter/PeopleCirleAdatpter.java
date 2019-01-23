@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.bawei.www.diofrysky.R;
 import com.bawei.www.diofrysky.bean.PeopleCirleBean;
+import com.bawei.www.diofrysky.view.myview.MultiImageView;
 import com.bumptech.glide.Glide;
 import com.facebook.drawee.view.SimpleDraweeView;
 
@@ -18,6 +19,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class PeopleCirleAdatpter extends RecyclerView.Adapter<PeopleCirleAdatpter.ViewHolder> {
 
@@ -58,7 +60,21 @@ public class PeopleCirleAdatpter extends RecyclerView.Adapter<PeopleCirleAdatpte
         viewHolder.peoplecirlehandtime.setText(dateString);
 
         viewHolder.peoplecirletitle.setText(mlist.get(i).getContent());
-        Glide.with(context).load(mlist.get(i).getImage()).into(viewHolder.peoplecirleimg);
+
+        String images = mlist.get(i).getImage();
+        Pattern pen = Pattern.compile("\\,");
+        String[] img = pen.split(images);
+
+        List<String> imgs = new ArrayList<>();
+
+        for (int j = 0; j < img.length; j++) {
+            imgs.add(img[j]);
+        }
+
+        viewHolder.peoplecirleimg.setList(imgs);
+
+
+        //Glide.with(context).load(mlist.get(i).getImage()).into(viewHolder.peoplecirleimg);
 
     }
 
@@ -76,7 +92,7 @@ public class PeopleCirleAdatpter extends RecyclerView.Adapter<PeopleCirleAdatpte
 
         private final SimpleDraweeView peoplecirlehandimg;
         private final TextView peoplecirlehandname, peoplecirlehandtime, peoplecirletitle;
-        private final ImageView peoplecirleimg;
+        private final MultiImageView peoplecirleimg;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

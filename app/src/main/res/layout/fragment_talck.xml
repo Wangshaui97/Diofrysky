@@ -5,10 +5,10 @@
     android:layout_height="match_parent"
     tools:context=".view.indentfragment.AlllsitFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <com.jcodecraeer.xrecyclerview.XRecyclerView
+        android:id="@+id/indent_talck_rview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="4" />
+        android:layout_height="match_parent">
 
+    </com.jcodecraeer.xrecyclerview.XRecyclerView>
 </FrameLayout>

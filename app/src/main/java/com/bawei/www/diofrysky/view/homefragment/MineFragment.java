@@ -167,19 +167,20 @@ public class MineFragment extends Fragment implements IView {
         super.onActivityResult(requestCode, resultCode, data);
 
         //获取图片路径
-        if(data==null){
+        if (data == null) {
             return;
         }
-        if(requestCode==0){
-            String filePath = getFilePath(null,requestCode,data);
+        if (requestCode == 0) {
+            String filePath = getFilePath(null, requestCode, data);
             /**
              * 这里是用的上传头像
              */
             Map<String, Object> map = new HashMap<>();
-            List<Object> list =new ArrayList<>();
+            List<Object> list = new ArrayList<>();
             list.add(filePath);
-            iPersonter.getrequestimgtitle(Apis.PUSH_HANDIMG,map,list,HandimgBean.class);
+            iPersonter.getrequestimgtitle(Apis.PUSH_HANDIMG, map, list, HandimgBean.class);
         }
+    }
 //
 //        if(requestCode==0&&resultCode==RESULT_OK){
 //            Bitmap bitmap=data.getParcelableExtra("data");
@@ -213,8 +214,6 @@ public class MineFragment extends Fragment implements IView {
 
 
 
-
-    }
 
     private String createImageFilePath() {
         //裁剪之后的图片（每裁剪一次会覆盖之前的裁剪图片）
